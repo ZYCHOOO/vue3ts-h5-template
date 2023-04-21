@@ -10,13 +10,13 @@ const routes: Array<RouteRecordRaw> = [
     path: '/home',
     name: 'Home',
     redirect: '/home/index',
-    component: () => import(/* webChunkName: 'hoome' */ '@/views/home/home.vue'),
+    component: () => import('@/views/home/home.vue'),
     children: [
       {
         path: 'index',
         name: 'Index',
         component: () =>
-          import(/* webpackChunkName: 'home-index' */ '@/views/home/index.vue'),
+          import('@/views/home/index.vue'),
         meta: { title: '首页', showNavbar: false }
       }
     ]
@@ -25,9 +25,14 @@ const routes: Array<RouteRecordRaw> = [
     path: '/login',
     name: 'Login',
     component: () =>
-      import(/* webpackChunkName: "login" */ '@/views/login/login.vue'),
+      import('@/views/login/login.vue'),
     meta: { title: '登录', showNavbar: false }
   },
+  {
+    path: '/forgetPassword',
+    name: 'ForgetPassword',
+    component: () => import('@/views/login/forgetPassword.vue')
+  }
 ]
 
 const router = createRouter({

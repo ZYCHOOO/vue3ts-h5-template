@@ -1,6 +1,6 @@
 <template>
   <div class="login-wrapper">
-    <div class="login-wrapper-title">vue-h5-代码模版</div>
+    <div class="login-wrapper-title">vue3ts-h5-代码模版</div>
     <van-cell-group inset>
       <van-field
         v-model="username"
@@ -31,29 +31,32 @@
 </template>
 
 <script setup lang="ts">
-import { Toast } from 'vant'
-// import { useRouter } from 'vue-router'
+import { showSuccessToast, showFailToast } from 'vant'
+import { useRouter } from 'vue-router'
 import { reactive, toRefs } from 'vue'
 
 const loginEffect = () => {
-  // const router = useRouter()
+  const router = useRouter()
   const loginForm = reactive({ username: '', password: '' })
   const { username, password } = toRefs(loginForm)
-  // const loginValidate = () => {
-  //   if (!username.value || !password.value) {
-  //     Toast.fail('账号或密码不能为空！')
-  //     return false
-  //   }
-  //   return true
-  // }
+  const loginValidate = () => {
+    if (!username.value || !password.value) {
+      showFailToast('账号或密码不能为空！')
+      return false
+    }
+    return true
+  }
   const handleLogin = async () => {
-    // if (loginValidate()) {}
+    if (loginValidate()) {
+      showSuccessToast('登陆成功！')
+      router.push('/home')
+    }
   }
   return { username, password, handleLogin }
 }
 const forgetEffect = () => {
   const handleForget = () => {
-    Toast.fail('忘记密码操作！')
+    // router.push('/forgetPassword')
   }
   return { handleForget }
 }
