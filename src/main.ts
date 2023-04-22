@@ -7,6 +7,9 @@ import 'vant/lib/index.css'
 import { createPinia } from 'pinia'
 // 引入 pinia 数据持久化插件
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import '@/router/permission'
+
+import 'amfe-flexible/index.js'
 
 const app = createApp(App)
 const pinia = createPinia()
