@@ -20,6 +20,12 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
           import('@/views/home/index.vue'),
         meta: { title: '首页', showNavbar: false }
+      },
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: () => import('@/views/home/profile.vue'),
+        meta: { title: '我的', showNavbar: false }
       }
     ]
   },

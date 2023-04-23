@@ -9,3 +9,10 @@ export const apiLogin = (data: LoginData) => {
   })
 }
 
+export const apiLogout = () => {
+  return request({
+    url: '/user/logout',
+    method: 'post'
+  })
+}
+

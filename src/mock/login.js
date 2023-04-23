@@ -51,7 +51,7 @@ export default [
   // get user info
   {
     // eslint-disable-next-line no-useless-escape
-    url: '/vue3-h5-template/user/info\.*',
+    url: '/user/info\.*',
     type: 'get',
     response: config => {
       const token = getQueryString(config.query, 'token')
@@ -74,7 +74,7 @@ export default [
 
   // user logout
   {
-    url: '/vue3-h5-template/user/logout',
+    url: '/user/logout',
     type: 'post',
     response: _ => {
       return {
