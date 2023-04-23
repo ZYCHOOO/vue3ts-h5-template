@@ -34,8 +34,13 @@
 import { showSuccessToast, showFailToast } from 'vant'
 import { useRouter } from 'vue-router'
 import { reactive, toRefs } from 'vue'
+import { apiLogin } from '@/api/login'
+import { loginStore } from '@/store/login'
+
+console.log(import.meta.env)
 
 const loginEffect = () => {
+  const store = loginStore()
   const router = useRouter()
   const loginForm = reactive({ username: '', password: '' })
   const { username, password } = toRefs(loginForm)
@@ -48,6 +53,9 @@ const loginEffect = () => {
   }
   const handleLogin = async () => {
     if (loginValidate()) {
+      const result = await apiLogin({ username: username.value, password: password.value })
+      const { token } = result.data
+      store.setToken(token)
       showSuccessToast('登陆成功！')
       router.push('/home')
     }

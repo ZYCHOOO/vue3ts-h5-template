@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "staging": "vite --mode staging",
+    "production": "vite --mode production"
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",
