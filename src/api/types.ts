@@ -18,5 +18,5 @@ export interface NewsListParams {
 // 新闻详情参数
 export interface NewDetailParams {
   key: string,
-  uniquekey: string
+  uniquekey: any
 }

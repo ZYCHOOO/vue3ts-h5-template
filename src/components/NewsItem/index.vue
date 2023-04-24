@@ -1,5 +1,5 @@
 <template>
-  <div class="news-item">
+  <div class="news-item" @click="doItemClick(item?.uniquekey)">
     <img
       :src="item?.thumbnailPicS"
       alt=""
@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
 
 export interface NewsOption {
   uniquekey: string,
@@ -35,6 +36,13 @@ export default defineComponent({
   name: 'NewsItem',
   props: {
     item: { type: Object }
+  },
+  setup() {
+    const router = useRouter()
+    const doItemClick = (id: number) => {
+      router.push(`/newsDetail/${id}`)
+    }
+    return { doItemClick }
   }
 })
 
