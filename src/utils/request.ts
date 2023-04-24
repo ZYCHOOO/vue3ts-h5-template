@@ -39,6 +39,7 @@ requestArr.forEach((service) => {
   service.interceptors.response.use(
     async (response) => {
       const res = response.data
+      const statusCode = res.code || response.status
 
       // blob文件流
       if (res instanceof Blob) {
@@ -46,12 +47,12 @@ requestArr.forEach((service) => {
       }
 
       // 成功
-      if (res.code === httpEnums.CODES.Success) {
+      if (statusCode === httpEnums.CODES.Success) {
         return res
       }
 
       // token失效
-      if (res.code === httpEnums.CODES.UnAuthorized) {
+      if (statusCode === httpEnums.CODES.UnAuthorized) {
         return Promise.reject(new Error('token过期！'))
       }
 

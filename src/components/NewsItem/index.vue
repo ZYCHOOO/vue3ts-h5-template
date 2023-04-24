@@ -1,0 +1,72 @@
+<template>
+  <div class="news-item">
+    <img
+      :src="item?.thumbnailPicS"
+      alt=""
+      class="news-item-thumbnail"
+    >
+    <div class="news-item-info">
+      <div class="news-item-title" v-html="item?.title" />
+      <div class="news-item-subinfo">
+        <div class="news-item-author" v-html="item?.author_name" />
+        <div class="news-item-date" v-html="item?.date" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export interface NewsOption {
+  uniquekey: string,
+  url: string,
+  title: string,
+  category: string,
+  date: string,
+  is_content: string,
+  author_name: string,
+  thumbnail_pic_s: string,
+  thumbnail_pic_s02: string,
+  thumbnail_pic_s03: string
+}
+
+export default defineComponent({
+  name: 'NewsItem',
+  props: {
+    item: { type: Object }
+  }
+})
+
+</script>
+
+<style lang="less" scoped>
+.news-item {
+  .flex-row;
+  .flex-justify-center;
+  margin: 0 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+
+  &-thumbnail {
+    width: 100px;
+  }
+  &-info {
+    flex: 1;
+  }
+  &-subinfo {
+    .flex-row;
+    margin-top: 10px;
+    font-size: 12px;
+    color: @secondary-text-color;
+  }
+  &-title {
+    font-size: 16px;
+    color: @main-text-color;
+  }
+  &-date {
+    margin-left: auto;
+  }
+  
+}
+</style>
