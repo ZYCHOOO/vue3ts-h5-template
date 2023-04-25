@@ -1,3 +1,4 @@
+// flex 相关
 .flex-row() {
   display: flex;
   flex-direction: row;
@@ -27,4 +28,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+// 单行省略
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 多行省略
+.multiline-ellipsis(@lineNum) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: @lineNum;
+  -webkit-box-orient: vertical;
+}
+
+// 底部安全区域适配
+.bottom-safe-area {
+  padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+  padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
 }
