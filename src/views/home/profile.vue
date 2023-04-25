@@ -1,21 +1,35 @@
 <template>
   <div class="profile-index">
-    <div class="profile-card" />
+    <div class="profile-card">
+      <div class="profile-card-info">
+        <div class="profile-card-name" v-html="profile.name" />
+        <div class="profile-card-mobile" v-html="profile.mobile" />
+      </div>
+      <img :src="profile.avatar" class="profile-card-avatar" alt="" />
+    </div>
     <div class="logout-btn" @click="handleLogout">退出登录</div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 import { apiLogout } from '@/api/login'
 import { loginStore } from '@/store/login'
+import { userStore } from '@/store/user'
 
-const store = loginStore()
+const user = userStore()
+const login = loginStore()
 const router = useRouter()
+const { profile } = storeToRefs(user)
+console.log(profile.value)
+
 const handleLogout = async () => {
   const res = await apiLogout()
-  store.resetToken()
-  router.push('/login')
+  if (res.code === 200) {
+    login.resetToken()
+    router.push('/login')
+  }
 }
 
 </script>
@@ -28,11 +42,30 @@ const handleLogout = async () => {
     overflow: auto;
   }
   .profile-card {
+    .flex-row;
+    .flex-align-center;
     width: 347px;
     height: 186px;
     border-radius: 12px;
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, .07);
     background: linear-gradient(90deg, #4685FF 0%, rgba(189,206,255,0.25) 100%);
+    &-avatar {
+      margin-left: auto;
+      margin-right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, .2);
+    }
+    &-info {
+      .flex-column;
+      margin-left: 24px;
+      color: #FFF;
+    }
+    &-mobile {
+      margin-top: 15px;
+      font-size: 14px;
+    }
   }
   .logout-btn {
     .flex-center;

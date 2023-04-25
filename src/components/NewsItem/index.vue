@@ -1,7 +1,7 @@
 <template>
   <div class="news-item" @click="doItemClick(item?.uniquekey)">
     <img
-      :src="item?.thumbnailPicS"
+      :src="item?.thumbnail_pic_s"
       alt=""
       class="news-item-thumbnail"
     >
@@ -61,6 +61,7 @@ export default defineComponent({
   }
   &-info {
     flex: 1;
+    margin-left: 8px;
   }
   &-subinfo {
     .flex-row;

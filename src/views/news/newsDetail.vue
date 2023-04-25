@@ -36,7 +36,6 @@ const getNewsDetail = async () => {
     content: res.result.content,
     ...res.result.detail
   }
-  console.log(newsDetail.value)
 }
 
 getNewsDetail()

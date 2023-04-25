@@ -36,11 +36,11 @@ import { useRouter } from 'vue-router'
 import { reactive, toRefs } from 'vue'
 import { apiLogin } from '@/api/login'
 import { loginStore } from '@/store/login'
-
-console.log(import.meta.env)
+import { userStore } from '@/store/user'
 
 const loginEffect = () => {
-  const store = loginStore()
+  const user = userStore()
+  const login = loginStore()
   const router = useRouter()
   const loginForm = reactive({ username: '', password: '' })
   const { username, password } = toRefs(loginForm)
@@ -55,7 +55,8 @@ const loginEffect = () => {
     if (loginValidate()) {
       const result = await apiLogin({ username: username.value, password: password.value })
       const { token } = result.data
-      store.setToken(token)
+      login.setToken(token)
+      await user.getProfile(token)
       showSuccessToast('登陆成功！')
       router.push('/home')
     }

@@ -6,6 +6,10 @@ export interface LoginData {
   password: string
 }
 
+export interface ProfileParams {
+  token: string
+}
+
 // 新闻列表参数
 export interface NewsListParams {
   key: string,

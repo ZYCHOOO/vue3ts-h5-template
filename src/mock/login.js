@@ -11,7 +11,7 @@ const users = {
     introduction: 'I am a super administrator',
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     name: '超级管理员',
-    sex: 1,
+    gender: 1,
     mobile: '13500000000'
   },
   'editor-token': {
@@ -19,7 +19,7 @@ const users = {
     introduction: 'I am an editor',
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     name: 'Normal Editor',
-    sex: 2,
+    gender: 2,
     mobile: '13700000000'
   }
 }
@@ -48,10 +48,10 @@ export default [
     }
   },
 
-  // get user info
+  // get user pofile
   {
     // eslint-disable-next-line no-useless-escape
-    url: '/user/info\.*',
+    url: '/user/profile\.*',
     type: 'get',
     response: config => {
       const token = getQueryString(config.query, 'token')

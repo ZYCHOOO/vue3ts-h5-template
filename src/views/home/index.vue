@@ -34,7 +34,6 @@ watch(() => activeName.value, (val: string) => {
 const getNewsList = async (type?: string) => {
   const res = await apiGetNewsList({ key: JH_NEWS_KEY, type })
   newsList.value = res.result.data
-  console.log(newsList.value)
 }
 
 getNewsList()
