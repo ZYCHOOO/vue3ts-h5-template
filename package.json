@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "plop": "plop",
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
@@ -25,6 +26,7 @@
     "autoprefixer": "^10.4.14",
     "less": "^4.1.3",
     "mockjs": "^1.1.0",
+    "plop": "^3.1.2",
     "postcss": "^8.4.23",
     "postcss-loader": "^7.2.4",
     "postcss-pxtorem": "^6.0.0",

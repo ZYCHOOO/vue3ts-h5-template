@@ -34,7 +34,7 @@
 import { showSuccessToast, showFailToast } from 'vant'
 import { useRouter } from 'vue-router'
 import { reactive, toRefs } from 'vue'
-import { apiLogin } from '@/api/login'
+import { apiLogin } from '@/api/loginApi'
 import { loginStore } from '@/store/login'
 import { userStore } from '@/store/user'
 

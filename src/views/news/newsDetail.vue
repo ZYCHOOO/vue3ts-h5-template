@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { apiGetNewsDetail } from '@/api/news'
+import { apiGetNewsDetail } from '@/api/newsApi'
 import { JH_NEWS_KEY } from '@/constant/enums'
 
 interface newsDetail {

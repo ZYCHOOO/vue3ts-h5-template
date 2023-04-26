@@ -1,0 +1,11 @@
+import { RouteRecordRaw } from 'vue-router'
+
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: '/{{ name }}',
+    name: '{{ name }}',
+    component: () => import('@/views/{{ name }}/{{ name }}.vue')
+  }
+]
+
+export default routes

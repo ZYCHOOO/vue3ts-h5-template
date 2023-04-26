@@ -1,0 +1,18 @@
+import { request } from '@/utils/request'
+import {} from './types'
+
+export const apiGet{{ firstUpper apiName }}List = (params) => {
+  return request({
+    url: '/{{ apiName }}/list',
+    method: 'get',
+    params
+  })
+}
+
+export const apiUpdate{{ firstUpper apiName }} = (data) => {
+  return request({
+    url: '/{{ apiName }}/update',
+    method: 'post',
+    data
+  })
+}

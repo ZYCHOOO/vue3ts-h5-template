@@ -1,6 +1,6 @@
 // router - intex.ts
 import { storeToRefs } from 'pinia'
-import newsRoutes from './modules/news'
+import newsRoutes from './modules/newsRouter'
 import { loginStore } from '@/store/login'
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 

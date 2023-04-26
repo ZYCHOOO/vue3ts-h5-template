@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { NEWS_TABS } from '@/constant/enums'
-import { apiGetNewsList } from '@/api/news'
+import { apiGetNewsList } from '@/api/newsApi'
 import { JH_NEWS_KEY } from '@/constant/enums'
 import NewsItem, { NewsOption } from '@/components/NewsItem/index.vue'
 

@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
-import { apiLogout } from '@/api/login'
+import { apiLogout } from '@/api/loginApi'
 import { loginStore } from '@/store/login'
 import { userStore } from '@/store/user'
 

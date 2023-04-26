@@ -1,0 +1,19 @@
+<template>
+  <div class="{{ lowerCase componentName }}">
+    {{componentName}} component
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: '{{ componentName }}',
+  props: {},
+  setup(porps, ctx) {}
+})
+</script>
+
+<style lang="less" scoped>
+.{{ lowerCase componentName }} {}
+</style>
