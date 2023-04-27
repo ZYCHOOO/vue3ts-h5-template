@@ -1,7 +1,8 @@
 // router - intex.ts
 import { storeToRefs } from 'pinia'
-import newsRoutes from './modules/newsRouter'
 import { loginStore } from '@/store/login'
+// append import
+import newsRoutes from './modules/newsRouter'
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
@@ -47,7 +48,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'ForgetPassword',
     component: () => import('@/views/login/forgetPassword.vue')
   },
-  ...newsRoutes
+  ...newsRoutes,
+// append new router
 ]
 
 const router = createRouter({
