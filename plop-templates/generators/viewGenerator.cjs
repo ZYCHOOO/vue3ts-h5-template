@@ -20,13 +20,13 @@ module.exports = {
     let actions = []
     actions.push({
       type: 'add', // 代表添加文件
-      path: 'src/views/{{name}}/{{name}}.vue', // 这里的name就是上面定义的键
+      path: 'src/views/{{ name }}/{{ name }}.vue', // 这里的name就是上面定义的键
       templateFile: 'plop-templates/templates/view.hbs'
     })
     if (data.wantRouter) {
       actions.push({
         type: 'add',
-        path: 'src/router/modules/{{camelCase name}}Router.ts',
+        path: 'src/router/modules/{{ camelCase name }}Router.ts',
         templateFile: 'plop-templates/templates/router.ts.hbs'
       })
       // 修改已存在文件的内容
@@ -35,7 +35,7 @@ module.exports = {
         path: 'src/router/index.ts',
         pattern: /(\/\/ append import)/gi,
         // camelCase 用来将输入的名称转化为驼峰
-        template: "import {{camelCase name}}Router from './modules/{{camelCase name}}Router'\r\n$1"
+        template: "import {{ camelCase name }}Router from './modules/{{ camelCase name }}Router'\r\n$1"
       })
       actions.push({
         type: 'modify',
@@ -43,7 +43,7 @@ module.exports = {
         pattern: /(\/\/ append new router)/gi,
         // camelCase 用来将输入的名称转化为驼峰
         // $1 用于在结束的时候添加匹配的占位，用于下次使用
-        template: ',\r\n\  {{camelCase name}}Router$1'
+        template: '...{{ camelCase name }}Router,\r\n$1'
       })
     }
     return actions
