@@ -1,4 +1,4 @@
-基于 vite4 + Vue3.2 + TypeScript + pinia + mock + sass + vantUI + 适配 + axios 封装的移动端基础模版
+📱⚡️ 基于 vite4 + Vue3.2 + TypeScript + pinia + mock + sass + vantUI + 适配 + axios 封装的移动端基础模版
 
 ## 前言
 * vue-cli 移动端模版地址：https://github.com/ZYCHOOO/vue3-h5-template
@@ -658,11 +658,96 @@ export const apiLogout = () => {
 
 ### <span id="pinia">⚙️ pinia 使用</span>
 
+- 文档：https://pinia.vuejs.org/
+
 pinia 的特点：
 1. 支持 vue2 和 vue3，两者都可以使用 pinia；
 2. 语法简洁，支持 vue3 中 setup 的写法，不必像 vuex 那样定义 state、mutations、actions、getters 等，可以按照 setup Composition API 的方式返回状态和改变状态的方法，实现代码的扁平化；
 3. 支持 vuex 中 state、actions、getters 形式的写法，丢弃了 mutations，开发时候不用根据同步异步来决定使用 mutations 或 actions，pinia 中只有 actions；
 4. 对 TypeScript 支持非常友好。
+
+#### pinia 的使用
+
+```
+npm install pinia
+```
+
+```typescript
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
+import { apiGetProfile } from '@/api/loginApi'
+
+export const userStore = defineStore('user', () => {
+  const profile = ref()
+
+  const getProfile = async(token: string) => {
+    const res = await apiGetProfile({ token })
+    profile.value = res.data
+  }
+
+  const clearProfile = () => {
+    profile.value = null
+  }
+
+  return { profile, getProfile, clearProfile }
+})
+```
+通过 `storeToRefs` 拿到响应式数据
+
+```javascript
+import { storeToRefs } from 'pinia'
+
+const { profile } = storeToRefs(user)
+console.log(profile.value)
+```
+
+#### pinia 持久化
+
+- 文档：https://github.com/prazdevs/pinia-plugin-persistedstate
+
+通过 `pinia-plugin-persistedstate` 来实现数据持久化
+
+```
+npm i pinia-plugin-persistedstate
+```
+
+```typescript
+// 引入 pinia
+import { createPinia } from 'pinia'
+// 引入 pinia 数据持久化插件
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
+const app = createApp(App)
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+
+app
+  .use(Vant)
+  .use(pinia)
+  .use(router)
+  .mount('#app')
+```
+
+```typescript
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
+
+export const loginStore = defineStore('login', () => {
+  const token = ref<string>('')
+
+  const setToken = (val: string) => {
+    token.value = val
+  }
+
+  const resetToken = () => {
+    token.value = ''
+  }
+
+  return { token, setToken, resetToken }
+}, {
+  persist: true
+})
+```
 
 [🔙 返回顶部](#catalogue)
 
@@ -727,7 +812,7 @@ router.beforeEach((to: any, _from: any, next: any) => {
 
 ### <span id="plop">⚙️ plop 自动化</span>
 
-通过指令可快速生成相关文件，方便开发
+通过指令可通过 plop 快速生成相关文件，方便开发
 
 ```
 npm run plop view
@@ -735,7 +820,46 @@ npm run plop view
 npm run plop component
 
 npm run plop api
-
 ```
+
+在 `plopfile.cjs` 中定义了三个生成器，分别是 `页面` `组件` `api`
+
+```javascript
+const apiGenerator = require('./plop-templates/generators/apiGenerator.cjs')
+const viewGenerator = require('./plop-templates/generators/viewGenerator.cjs')
+const componentGenerator = require('./plop-templates/generators/componentGenerator.cjs')
+//  Plop 入口文件 需要导出一个函数
+// 此函数接收一个 plop 对象，用于创建生成器任务
+
+module.exports = plop => {
+  plop.setHelper('lowerCase', (val) => {
+    return val.toLowerCase()
+  })
+  plop.setHelper('firstUpper', (val) => {
+    const arr = val.split('')
+    arr[0] = arr[0].toUpperCase()
+    return arr.join('')
+  })
+  // 指定一个生成器
+  // 第一个参数是指定生成器名称
+  // 第二个参数是用来定义生成的具体可选项
+
+  // 生成页面
+  plop.setGenerator('view', viewGenerator)
+
+  // 生成api
+  plop.setGenerator('api', apiGenerator)
+
+  // 生成component
+  plop.setGenerator('component', componentGenerator)
+}
+```
+
+![自动化创建组件.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7ed7929bdf604c2b94ec0f100fb84575~tplv-k3u1fbpfcp-watermark.image?)
+
+![自动化创建api.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8ce8d15f06b04ea7ac5c067bc7c0834c~tplv-k3u1fbpfcp-watermark.image?)
+
+![自动化创建页面.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/68eda6db18754b2cb407c0e267b3942d~tplv-k3u1fbpfcp-watermark.image?)
+
 [🔙 返回顶部](#catalogue)
 
