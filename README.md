@@ -1,4 +1,4 @@
-📱⚡️ 基于 vite4 + Vue3.2 + TypeScript + pinia + mock + sass + vantUI + 适配 + axios 封装的移动端基础模版
+📱⚡️ 基于 vite4 + Vue3.2 + TypeScript + pinia + mock + less + vantUI + 适配 + axios 封装的移动端基础模版
 
 ## 前言
 * vue-cli 移动端模版地址：https://github.com/ZYCHOOO/vue3-h5-template
