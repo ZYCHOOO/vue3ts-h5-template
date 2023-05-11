@@ -15,7 +15,7 @@ module.exports = {
     const lowerComponentName = data.componentName.toLowerCase()
     actions.push({
       type: 'add', // 代表添加文件
-      path: `src/components/{{componentName}}/${lowerComponentName}.vue`, // 这里的name就是上面定义的键
+      path: `src/components/{{componentName}}/index.vue`, // 这里的name就是上面定义的键
       templateFile: 'plop-templates/templates/component.hbs'
     })
     return actions
