@@ -5,7 +5,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/newsDetail/:id',
     name: 'NewsDetail',
     component: () => import('@/views/news/newsDetail.vue'),
-    meta: { title: '新闻详情' }
+    meta: { title: '新闻详情', showNavbar: true }
   }
 ]
 
