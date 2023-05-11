@@ -1,5 +1,5 @@
 <template>
-  <div class="{{ lowerCase componentName }}">
+  <div class="{{ pascalCase2Line componentName }}">
     {{componentName}} component
   </div>
 </template>
@@ -15,5 +15,5 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-.{{ lowerCase componentName }} {}
+.{{ pascalCase2Line componentName }} {}
 </style>

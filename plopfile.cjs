@@ -8,6 +8,11 @@ module.exports = plop => {
   plop.setHelper('lowerCase', (val) => {
     return val.toLowerCase()
   })
+  plop.setHelper('pascalCase2Line', (val) => {
+    arr = val.split('')
+    arr[0] = arr[0].toLowerCase()
+    return arr.join('').replace(/([A-Z])/g,"-$1").toLowerCase()
+  })
   plop.setHelper('firstUpper', (val) => {
     const arr = val.split('')
     arr[0] = arr[0].toUpperCase()
