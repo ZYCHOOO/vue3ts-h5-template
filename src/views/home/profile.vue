@@ -9,6 +9,7 @@
     </div>
     <div class="logout-btn" @click="handleLogout">退出登录</div>
   </div>
+  <demo-btn text="返回" />
 </template>
 
 <script setup lang="ts">
@@ -17,6 +18,7 @@ import { useRouter } from 'vue-router'
 import { apiLogout } from '@/api/loginApi'
 import { loginStore } from '@/store/login'
 import { userStore } from '@/store/user'
+import DemoBtn from '@/components/FloatBtn/index.vue'
 
 const user = userStore()
 const login = loginStore()
@@ -36,8 +38,8 @@ const handleLogout = async () => {
 
 <style lang="less" scoped>
   .profile-index {
-    padding: 10px;
-    min-height: 100vh;
+    padding: 10px 10px 0 10px;
+    min-height: calc(100vh - 60px);
     background: @main-bg-color;
     overflow: auto;
   }
@@ -69,7 +71,7 @@ const handleLogout = async () => {
   }
   .logout-btn {
     .flex-center;
-    position: fixed;
+    position: absolute;
     bottom: 107px;
     left: 50%;
     width: 167px;

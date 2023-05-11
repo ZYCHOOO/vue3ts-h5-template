@@ -12,6 +12,8 @@ export default defineConfig({
     }
   },
   server: {
+    port: 8080,
+    host: '0.0.0.0',
     proxy: {
       '/api': { // 匹配请求路径，
         target: 'http://v.juhe.cn/toutiao', // 代理的目标地址

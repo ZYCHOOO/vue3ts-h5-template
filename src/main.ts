@@ -11,6 +11,7 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import '@/router/permission'
 
 import 'amfe-flexible/index.js'
+import '@/styles/index.less'
 
 initMockServer()
 
