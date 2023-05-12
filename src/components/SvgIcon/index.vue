@@ -8,7 +8,7 @@
   />
   <!-- 内部 svg -->
   <svg v-else class="svg-icon" :class="className" aria-hidden="true">
-    <use :xlink:href="iconName" />
+    <use :xlink:href="`#icon-${icon}`" />
   </svg>
 </template>
 
@@ -23,7 +23,6 @@ export default defineComponent({
     className: { type: String, default: '' }
   },
   setup(props) {
-    const iconName = computed(() => `#icon-${props.icon}`)
     const isExternal = computed(() => external(props.icon))
 
     const externalIconStyle = computed(() => ({
@@ -32,7 +31,6 @@ export default defineComponent({
     }))
 
     return {
-      iconName,
       isExternal,
       externalIconStyle
     }

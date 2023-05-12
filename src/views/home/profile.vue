@@ -7,9 +7,21 @@
       </div>
       <img :src="profile.avatar" class="profile-card-avatar" alt="" />
     </div>
+
+    <van-cell-group inset>
+      <van-cell
+        v-for="item in cellList"
+        :key="item.id"
+        is-link
+      >
+        <template #title>
+          <svg-icon :icon="item.icon" />
+          <span class="cell-title">{{ item.title }}</span>
+        </template>
+      </van-cell>
+    </van-cell-group>
     <div class="logout-btn" @click="handleLogout">退出登录</div>
   </div>
-  <demo-btn text="返回" />
 </template>
 
 <script setup lang="ts">
@@ -18,7 +30,12 @@ import { useRouter } from 'vue-router'
 import { apiLogout } from '@/api/loginApi'
 import { loginStore } from '@/store/login'
 import { userStore } from '@/store/user'
-import DemoBtn from '@/components/FloatBtn/index.vue'
+
+const cellList = [
+  { id: 1, title: '信息管理', icon: 'user' },
+  { id: 2, title: '个人收藏', icon: 'star' },
+  { id: 3, title: '设置', icon: 'setting' }
+]
 
 const user = userStore()
 const login = loginStore()
@@ -83,5 +100,18 @@ const handleLogout = async () => {
     border: 0.01rem solid rgba(151, 151, 151, 0.5);
     color: rgba(155, 158, 167, 0.7);
     transform: translateX(-50%);
+  }
+  .van-cell-group {
+    margin: 10px 0 0 0;
+    .van-cell {
+      padding: 10px;
+      &::after {
+        left: 10px;
+        right: 10px;
+      }
+      .cell-title {
+        margin-left: 16px;
+      }
+    }
   }
 </style>
