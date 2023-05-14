@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
 import { storeToRefs } from 'pinia'
 import { loginStore } from '@/store/login'
 import { showNotify } from 'vant'
@@ -22,9 +22,9 @@ requestArr.forEach((service) => {
   const { token } = storeToRefs(store)
   // request interceptor
   service.interceptors.request.use(
-    async (config) => {
+    async (config: AxiosRequestConfig) => {
       if (token.value) {
-        config.headers.Authorization = `Bearer ${token.value}`
+        config.headers!.Authorization = `Bearer ${token.value}`
       }
       return config
     },
@@ -37,7 +37,7 @@ requestArr.forEach((service) => {
 
   // response interceptor
   service.interceptors.response.use(
-    async (response) => {
+    async (response: AxiosResponse) => {
       const res = response.data
       const statusCode = res.code || response.status
 

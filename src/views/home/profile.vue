@@ -41,7 +41,7 @@ const user = userStore()
 const login = loginStore()
 const router = useRouter()
 const { profile } = storeToRefs(user)
-console.log(profile.value)
+// console.log(profile.value)
 
 const handleLogout = async () => {
   const res = await apiLogout()
