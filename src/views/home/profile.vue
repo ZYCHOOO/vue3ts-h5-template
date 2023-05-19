@@ -13,6 +13,7 @@
         v-for="item in cellList"
         :key="item.id"
         is-link
+        @click="handleCell(item.title)"
       >
         <template #title>
           <svg-icon :icon="item.icon" />
@@ -25,6 +26,7 @@
 </template>
 
 <script setup lang="ts">
+import { showToast } from 'vant'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 import { apiLogout } from '@/api/loginApi'
@@ -49,6 +51,13 @@ const handleLogout = async () => {
     login.resetToken()
     router.push('/login')
   }
+}
+
+const handleCell = (title: string) => {
+  showToast({
+    message: title,
+    position: 'top'
+  })
 }
 
 </script>
