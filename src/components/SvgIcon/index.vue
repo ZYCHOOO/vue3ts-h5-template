@@ -18,6 +18,7 @@ import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'SvgIcon',
+  desc: 'svg 图标',
   props: {
     icon: { type: String, required: true },
     className: { type: String, default: '' }

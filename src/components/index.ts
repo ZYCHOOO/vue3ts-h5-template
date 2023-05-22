@@ -1,14 +1,16 @@
 import { App } from 'vue'
 import FloatBtn from './FloatBtn/index.vue'
-import NewsItem from './NewsItem/index.vue'
+import NewsCell from './NewsCell/index.vue'
 import SvgIcon from './SvgIcon/index.vue'
+import VirtualList from './VirtualList/index.vue'
 // import new components
 
-const components = {
+export const components = {
   FloatBtn,
-  NewsItem,
+  NewsCell,
   SvgIcon,
-  // add new components
+  VirtualList,
+// add new components
 }
 
 export default(app: App) => {

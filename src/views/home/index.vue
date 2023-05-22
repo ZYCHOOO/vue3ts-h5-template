@@ -7,7 +7,7 @@
         :title="tabItem.title"
         :name="tabItem.name"
       > 
-        <news-item
+        <news-cell
           v-for="newsItem in newsList"
           :key="newsItem.uniquekey"
           :item="newsItem"
@@ -22,7 +22,7 @@ import { ref, watch } from 'vue'
 import { NEWS_TABS } from '@/constant/enums'
 import { apiGetNewsList } from '@/api/newsApi'
 import { JH_NEWS_KEY } from '@/constant/enums'
-import NewsItem, { NewsOption } from '@/components/NewsItem/index.vue'
+import NewsCell, { NewsOption } from '@/components/NewsCell/index.vue'
 
 const activeName = ref<string>('top')
 const newsList = ref<NewsOption[]>([])

@@ -1,15 +1,15 @@
 <template>
-  <div class="news-item" @click="doItemClick(item?.uniquekey)">
+  <div class="news-cell" @click="doItemClick(item?.uniquekey)">
     <img
       :src="item?.thumbnail_pic_s"
       alt=""
-      class="news-item-thumbnail"
+      class="news-cell-thumbnail"
     >
-    <div class="news-item-info">
-      <div class="news-item-title" v-html="item?.title" />
-      <div class="news-item-subinfo">
-        <div class="news-item-author" v-html="item?.author_name" />
-        <div class="news-item-date" v-html="item?.date" />
+    <div class="news-cell-info">
+      <div class="news-cell-title" v-html="item?.title" />
+      <div class="news-cell-subinfo">
+        <div class="news-cell-author" v-html="item?.author_name" />
+        <div class="news-cell-date" v-html="item?.date" />
       </div>
     </div>
   </div>
@@ -33,7 +33,8 @@ export interface NewsOption {
 }
 
 export default defineComponent({
-  name: 'NewsItem',
+  name: 'NewsCell',
+  desc: '新闻单元格',
   props: {
     item: { type: Object }
   },
@@ -49,7 +50,7 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-.news-item {
+.news-cell {
   .flex-row;
   .flex-justify-center;
   margin: 0 10px;

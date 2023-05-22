@@ -14,17 +14,20 @@ import { ref, defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'FloatBtn',
+  desc: '悬浮按钮',
   props: {
     icon: { type: String },
-    text: { type: String }
+    text: { type: String },
+    movable: { type: Boolean, default: false }
   },
-  setup() {
+  setup(props) {
     const timer = ref()
     const isLongClick = ref(false)
     const originGesPos = ref({ x: 0, y: 0 })
     const originElePos = ref({ x: 0, y: 0 })
 
     const touchstart = (e: TouchEvent) => {
+      if (!props.movable) return
       console.log(e)
       // 定时器控制长按时间，超过500毫秒开始进行拖拽
       timer.value = setTimeout(() => {
@@ -42,6 +45,7 @@ export default defineComponent({
     }
 
     const touchmove = (e: TouchEvent) => {
+      if (!props.movable) return
       console.log(e)
       // 未达到500毫秒就移动则不触发长按，清空定时器
       clearTimeout(timer.value)
@@ -58,6 +62,7 @@ export default defineComponent({
     }
 
     const touchend = (e: TouchEvent) => {
+      if (!props.movable) return
       console.log(e)
       // 清空定时器
       clearTimeout(timer.value)

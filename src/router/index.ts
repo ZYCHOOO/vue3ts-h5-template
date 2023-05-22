@@ -28,6 +28,12 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Profile',
         component: () => import('@/views/home/profile.vue'),
         meta: { title: '我的', showNavbar: false }
+      },
+      {
+        path: 'components',
+        name: 'Components',
+        component: () => import('@/views/home/components.vue'),
+        meta: { title: '我的', showNavbar: false }
       }
     ]
   },
