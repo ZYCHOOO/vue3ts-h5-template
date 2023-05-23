@@ -55,7 +55,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/login/forgetPassword.vue')
   },
   ...newsRoutes,
-// append new router
+  // append new router
 ]
 
 const router = createRouter({

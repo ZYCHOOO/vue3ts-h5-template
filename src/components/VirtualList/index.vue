@@ -1,14 +1,19 @@
 <template>
-  <div ref="listWrap" class="virtual-list-wrap">
+  <div ref="listWrap" class="virtual-list-wrap" @scroll="scrollListener">
     <div ref="lis†" class="virtual-list">
-
+      <template
+        v-for="item in showList"
+        :key="item[itemKey]"
+      >
+        <slot :item-info="item" />
+      </template>
     </div>
-    VirtualList component
   </div>
+
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted } from 'vue'
+import { ref, defineComponent, onMounted, computed } from 'vue'
 
 export default defineComponent({
   name: 'VirtualList',
@@ -21,12 +26,46 @@ export default defineComponent({
     startIndex: { type: Number, default: 0 }, // 起始下标
     endIndex: { type: Number, default: 0 } // 结束下标
   },
-  setup(props, ctx) {}
+  setup(props) {
+    const listWrap = ref<HTMLDivElement>() // 获取列表视图模型节点
+    const list = ref<HTMLDivElement>() // 获取列表节点
+    const start = ref(props.startIndex)
+    const end = ref(props.endIndex)
+
+    onMounted(() => {
+      // 设置列表视图模型的高度
+      listWrap.value!.style.height = props.itemHeight * props.showNum + 'px'
+    })
+
+    const showList = computed(() => {
+      // 获取展示的列表
+      return props.listData.slice(start.value, end.value)
+    })
+
+    const scrollListener = () => {
+      // 获取滚动高度
+      const scrollTop = listWrap.value!.scrollTop
+
+      // 开始索引
+      start.value = Math.floor(scrollTop / props.itemHeight)
+      // 结束索引
+      end.value = start.value + props.showNum
+
+      list.value!.style.transform = `translateY(${start.value * props.itemHeight}px)`// 对列表项进行偏移
+    }
+
+    return {
+      showList,
+      scrollListener
+    }
+  }
 })
 </script>
 
 <style lang="less" scoped>
 .virtual-list {
-  &-wrap {}
+  &-wrap {
+    overflow-y: scroll;
+  }
 }
 </style>
