@@ -7,11 +7,16 @@
     </div>
     <div class="news-detail-content" v-html="newsDetail?.content" />
   </div>
+  <float-btn
+    icon="home"
+    text="首页"
+    @click.native="doBackHome"
+  />
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { apiGetNewsDetail } from '@/api/newsApi'
 import { JH_NEWS_KEY } from '@/constant/enums'
 
@@ -25,10 +30,15 @@ interface newsDetail {
 }
 
 const route = useRoute()
+const router = useRouter()
 const uniquekey = computed(() => {
   return route.params.id
 })
 const newsDetail = ref<newsDetail>()
+
+const doBackHome = () => {
+  router.push('home')
+}
 
 const getNewsDetail = async () => {
   const res = await apiGetNewsDetail({ key: JH_NEWS_KEY, uniquekey: uniquekey.value })
@@ -39,8 +49,6 @@ const getNewsDetail = async () => {
 }
 
 getNewsDetail()
-
-
 
 </script>
 

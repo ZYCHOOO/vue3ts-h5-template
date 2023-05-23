@@ -5,6 +5,7 @@
     @touchmove="touchmove($event)"
     @touchend="touchend($event)"
   >
+    <svg-icon :icon="icon" />
     <div class="float-btn-text">{{ text }}</div>
   </div>
 </template>
@@ -93,6 +94,7 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .float-btn {
+  .flex-column;
   .flex-center;
   position: absolute;
   bottom: 100px;
