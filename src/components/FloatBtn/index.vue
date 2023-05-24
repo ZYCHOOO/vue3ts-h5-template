@@ -17,9 +17,9 @@ export default defineComponent({
   name: 'FloatBtn',
   desc: '悬浮按钮',
   props: {
-    icon: { type: String },
-    text: { type: String },
-    movable: { type: Boolean, default: false }
+    icon: { type: String, desc: '图标名称' },
+    text: { type: String, desc: '按钮文字' },
+    movable: { type: Boolean, default: false, desc: '是否可移动' }
   },
   setup(props) {
     const timer = ref()

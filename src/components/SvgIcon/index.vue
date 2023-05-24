@@ -20,8 +20,8 @@ export default defineComponent({
   name: 'SvgIcon',
   desc: 'svg 图标',
   props: {
-    icon: { type: String, required: true },
-    className: { type: String, default: '' }
+    icon: { type: String, required: true, desc: '图标名称' },
+    className: { type: String, default: '', desc: '自定义类名' }
   },
   setup(props) {
     const isExternal = computed(() => external(props.icon))

@@ -36,7 +36,7 @@ export default defineComponent({
   name: 'NewsCell',
   desc: '新闻单元格',
   props: {
-    item: { type: Object }
+    item: { type: Object, desc: '新闻单元格内容' }
   },
   setup() {
     const router = useRouter()

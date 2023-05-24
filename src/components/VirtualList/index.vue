@@ -19,12 +19,12 @@ export default defineComponent({
   name: 'VirtualList',
   desc: '虚拟列表',
   props: {
-    itemKey: { type: String, default: 'id' },
-    listData: { type: Array, default: () => [] }, // 列表数据
-    itemHeight: { type: Number, default: 0 }, // 单个子项高度
-    showNum: { type: Number, default: 0 }, // 需要给用户展示的数量
-    startIndex: { type: Number, default: 0 }, // 起始下标
-    endIndex: { type: Number, default: 0 } // 结束下标
+    itemKey: { type: String, default: 'id', desc: 'key标识' },
+    listData: { type: Array, default: () => [], desc: '列表数据' }, // 列表数据
+    itemHeight: { type: Number, default: 0, desc: '单个子项高度' }, // 单个子项高度
+    showNum: { type: Number, default: 0, desc: '给用户展示的数量' }, // 需要给用户展示的数量
+    startIndex: { type: Number, default: 0, desc: '起始下标' }, // 起始下标
+    endIndex: { type: Number, default: 0, desc: '结束下标' } // 结束下标
   },
   setup(props) {
     const listWrap = ref<HTMLDivElement>() // 获取列表视图模型节点
