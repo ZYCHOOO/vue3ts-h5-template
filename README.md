@@ -42,6 +42,7 @@ npm run dev
 - [pinia 使用](#pinia)
 - [vue-router](#router)
 - [plop 自动化](#plop)
+- [内置组件](#components)
 
 
 ### <span id="env">⚙️ 环境变量配置</span>
@@ -835,6 +836,11 @@ module.exports = plop => {
   plop.setHelper('lowerCase', (val) => {
     return val.toLowerCase()
   })
+  plop.setHelper('pascalCase2Line', (val) => {
+    arr = val.split('')
+    arr[0] = arr[0].toLowerCase()
+    return arr.join('').replace(/([A-Z])/g,"-$1").toLowerCase()
+  })
   plop.setHelper('firstUpper', (val) => {
     const arr = val.split('')
     arr[0] = arr[0].toUpperCase()
@@ -863,3 +869,14 @@ module.exports = plop => {
 
 [🔙 返回顶部](#catalogue)
 
+### <span id="components">⚙️ 内置组件</span>
+
+在 v1.0.1 版本更新了模版的内置组件。分别是 `FloatBtn` `NewsCell` `SvgIcon` `VirtualList` 组件。
+
+![floatBtn.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c4759c21cbf44924adfc804acb806d6f~tplv-k3u1fbpfcp-watermark.image?)
+
+![newsCell.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ee0f03e4ebc244d897f2a15227be6d49~tplv-k3u1fbpfcp-watermark.image?)
+
+![svgIcon.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ede0285ab1c3484aa472d2384b4e96f7~tplv-k3u1fbpfcp-watermark.image?)
+
+![virtualList.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4071be6831f84a42a2ab4a4ca0a6138d~tplv-k3u1fbpfcp-watermark.image?)
