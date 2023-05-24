@@ -102,9 +102,9 @@ export default defineComponent({
   height: 44px;
   border-radius: 50%;
   box-shadow: 0px 6px 14px 0px rgba(0, 0, 0, .08);
+  color: @secondary-text-color;
   &-text {
     font-size: 10px;
-    color: @secondary-text-color;
   }
 }
 </style>

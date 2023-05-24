@@ -37,7 +37,7 @@ const uniquekey = computed(() => {
 const newsDetail = ref<newsDetail>()
 
 const doBackHome = () => {
-  router.push('home')
+  router.go(-1)
 }
 
 const getNewsDetail = async () => {
@@ -72,5 +72,9 @@ getNewsDetail()
     &-content {
       font-size: 14px;
     }
+  }
+  .float-btn {
+    bottom: 20px;
+    right: 16px;
   }
 </style>
