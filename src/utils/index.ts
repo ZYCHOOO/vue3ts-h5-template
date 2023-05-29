@@ -4,7 +4,7 @@ export const getEnvValue = (type: string) => {
 }
 
 // 获取url中参数
-export function getQueryString (url: string, queryKey: string) {
+export const getQueryString = (url: string, queryKey: string) => {
   const reg = new RegExp(`&{1}${queryKey}\\=[a-zA-Z0-9_-]+`, 'g')
   const matchResult = url.replace(/\?/g, '&').match(reg)![0]
   return matchResult.substr(matchResult.indexOf('=') + 1)
