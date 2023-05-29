@@ -96,13 +96,14 @@ export default defineComponent({
 .float-btn {
   .flex-column;
   .flex-center;
-  position: absolute;
-  bottom: 100px;
+  position: fixed;
   width: 44px;
   height: 44px;
   border-radius: 50%;
   box-shadow: 0px 6px 14px 0px rgba(0, 0, 0, .08);
+  background: #FFF;
   color: @secondary-text-color;
+  z-index: 9;
   &-text {
     font-size: 10px;
   }
