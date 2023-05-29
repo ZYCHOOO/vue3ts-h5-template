@@ -4,6 +4,7 @@ import router from './router'
 import Vant from 'vant'
 import 'vant/lib/index.css'
 import { initMockServer } from '@/mock/index'
+import { initEruda } from '@/utils/tools'
 // 引入 pinia
 import { createPinia } from 'pinia'
 // 引入 pinia 数据持久化插件
@@ -16,6 +17,7 @@ import 'amfe-flexible/index.js'
 import '@/styles/index.less'
 
 initMockServer()
+initEruda()
 
 const app = createApp(App)
 installComponents(app)
@@ -26,6 +28,5 @@ app
   .use(Vant)
   .use(pinia)
   .use(router)
-  // .use(installComponents)
   .mount('#app')
 
