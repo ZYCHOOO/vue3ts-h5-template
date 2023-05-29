@@ -41,7 +41,7 @@ const sms = ref<number>()
     :deep .van-cell-group--inset {
       margin: 0 55px;
       border-radius: 0;
-      border-bottom: 0.01rem solid rgba(174, 188, 212, 0.3);
+      border-bottom: 1px solid rgba(174, 188, 212, 0.3);
     }
     :deep .van-cell {
       padding: 14px 0 15px;

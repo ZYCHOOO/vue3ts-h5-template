@@ -33,7 +33,7 @@ npm run dev
 ## <span id="catalogue">目录</span>
 
 - [环境变量配置](#env)
-- [rem 适配](#rem)
+- [viewport 适配](#viewport)
 - [全局 less 样式](#less)
 - [适配苹果底部安全距离](#phonex)
 - [proxy 跨域配置](#proxy)
@@ -72,40 +72,8 @@ npm run dev
 
 [🔙 返回顶部](#catalogue)
 
-### <span id="rem">⚙️ rem 适配</span>
+### <span id="viewport">⚙️ viewport 适配</span>
 
-- 使用 postcss 插件 rem 适配
-
-[postcss-pxtorem](https://github.com/cuth/postcss-pxtorem) 是一款 postcss 插件，用于将 px 单位转化为 rem 单位
-[amfe-flexible](https://github.com/amfe/lib-flexible) 用于设置 rem 基准值
-
-```bash
-  npm i amfe-flexible -S
-  npm i postcss-pxtorem -D
-```
-
-在项目根目录中，新建`.postcssrc.cjs`
-
-```javascript
-module.exports = {
-  plugins: {
-    autoprefixer: {
-      browsers: 'last 5 version',
-      overrideBrowserslist: ['Android 4.1', 'iOS 7.1', 'Chrome > 31', 'ff > 31', 'ie >= 8']
-    },
-    'postcss-pxtorem': {
-      rootValue: 37.5,
-      propList: ['*']
-    }
-  }
-}
-```
-
-在`main.ts`中引入`amfe-flexible`
-
-```javascript
-import 'amfe-flexible/index.js'
-```
 
 [🔙 返回顶部](#catalogue)
 

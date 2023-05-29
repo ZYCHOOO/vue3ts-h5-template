@@ -13,7 +13,6 @@ import 'virtual:svg-icons-register'
 import installComponents from '@/components/index'
 import '@/router/permission'
 
-import 'amfe-flexible/index.js'
 import '@/styles/index.less'
 
 initMockServer()

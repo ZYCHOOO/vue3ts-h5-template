@@ -106,7 +106,7 @@ const handleCell = (title: string) => {
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
     border-radius: 4px;
-    border: 0.01rem solid rgba(151, 151, 151, 0.5);
+    border: 1px solid rgba(151, 151, 151, 0.5);
     color: rgba(155, 158, 167, 0.7);
     transform: translateX(-50%);
   }
