@@ -29,7 +29,7 @@
     "plop": "^3.1.2",
     "postcss": "^8.4.23",
     "postcss-loader": "^7.2.4",
-    "postcss-px-to-viewport": "^1.1.1",
+    "postcss-mobile-forever": "^3.4.2",
     "typescript": "^5.0.2",
     "vite": "^4.3.0",
     "vite-plugin-mock": "^3.0.0",
